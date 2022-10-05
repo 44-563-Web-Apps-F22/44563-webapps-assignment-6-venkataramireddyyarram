@@ -9,12 +9,12 @@
 
 <form>
     <div class="form-group">
-    <label for="basevalue">Enter base amount </label>
-    <input type ="number" id="basevalue" name="basevalue" value=20> 
+    <label for="bvalue">Enter base amount </label>
+    <input type ="number" id="bvalue" name="bvalue" value=20> 
 </div><br>
 <div class="form-group">
-    <label for="discountvalue">Enter the discount percentage </label>
-    <input type ="number" id="discountvalue" name="discountvalue" value=10 > 
+    <label for="discvalue">Enter the discount percentage </label>
+    <input type ="number" id="discvalue" name="discvalue" value=10 > 
 </div><br>
 <div>
     <input type="button" class="btn btn-danger" onclick="discount()" value="Apply discount">
@@ -26,15 +26,15 @@
 <script> 
 
 function discount (){
-    let basevalue=document.getElementById("basevalue").value;
-    let val=document.getElementById("discountvalue").value;
+    let bvalue=document.getElementById("bvalue").value;
+    let val=document.getElementById("discvalue").value;
     let result="";
-    for(let i=1;i<6;i++)
+    for(let k=1;k<6;k++)
     {
-        let discount=(basevalue*i)-((basevalue*i)*val/100);
+        let discount=(bvalue*k)-((bvalue*k)*val/100);
         result=result+" "+discount;
     }
-    document.getElementById("result").innerHTML="Discounted amounts for base "+ basevalue +" are "+result;
+    document.getElementById("result").innerHTML="Discounted amounts for base "+ bvalue +" are "+result;
 }
 </script>
 <div class="container">
@@ -59,8 +59,8 @@ function discount (){
 <script>
 function chooseOp()
 {
-   let base=document.getElementById("basevalue").value;
-   let discount=document.getElementById("discountvalue").value;
+   let base=document.getElementById("bvalue").value;
+   let discount=document.getElementById("discvalue").value;
    let times=document.getElementById("choice 1").checked;
    let divide=document.getElementById("choice 2").checked;
    let exponent=document.getElementById("choice 3").checked;
