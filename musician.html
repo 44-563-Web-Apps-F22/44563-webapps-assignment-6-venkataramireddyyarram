@@ -5,48 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guessing the Musicians</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="container p-3 my-3 bg-success text-white">
    <h1>Musician guess by Venkata Rami Reddy Yarram</h1> 
 
    <form>
-    <label for="form1_age">Enter the secret musician name</label>
-    <input type ="password" id="form1_age" name="form1_age" min=10 max=50 step=2 value="John Lennon"> <br>
+    <label for="form1_secret_musician">Enter the secret musician name</label>
+    <input type ="password" id="form1_secret_musician" name="form1_secret_musician" min=10 max=50 step=2 value="John Lennon"> <br>
 <br>
-    <label for="form1_nick">Guess the musician </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus><br>
+    <label for="guess_misician">Guess the musician </label>
+    <input type ="text" id="guess_misician" name="guess_misician" autofocus><br>
 <br>
-    <input type="button" onclick="checkGuess()" value="Check the guess"><br>
+    <input type="button" onclick="checkGuess();endgame()" value="Check the guess"><br>
     <br>
 </form>
 
 <p id="result"></p>
-
 <script> 
-correct=0
-wrong = 0
-function checkGuess(){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
+    var correct=0;
+    var wrong=0;
     
-    out = document.getElementById("result")
-    if(age==nick){
-        correct=correct + 1
-        out.innerHTML = "correct - "+correct+","+"wrong - "+wrong
-        alert("You got it right")
-    } else {
-        wrong = wrong + 1
-        out.innerHTML = "correct - "+correct+","+"wrong - "+wrong
-        alert("Wrong Musician")
+    function checkGuess(){
+        console.log("Getting form values")
+        secret = document.getElementById("form1_secret_musician").value
+        guess = document.getElementById("guess_misician").value
+ 
+        out = document.getElementById("result")
+        if(secret==guess)
+        {
+            correct=correct+1;
+            
+            alert("You got it right");
+            out.innerHTML ="correct counts: "+correct + "wrong counts :"+wrong
+        } 
+        else
+         {
+            wrong=wrong+1;
+            alert("Wrong Musician");
+            out.innerHTML = "correct counts:  "+correct + "  wrong counts :"+wrong
+        }
     }
-}
-</script>
+    </script>
 <div class="container">
     <img src="Yellow_jacket_wasp.jpg" class="img-fluid" onclick="swapImage()" id="ImageValue" width="100px" height="100px " alt="insect" >
     <p id="result">This image will be replaced</p>
     </div>
+    
     <script>
         var useImage= 1
         function swapImage(){
@@ -65,6 +78,22 @@ function checkGuess(){
                 break;
             }
         }
+        function endgame(){
+
+while (wrong > 3) {
+    if(wrong>=3){
+        wrong-=5
+        alert("Sorry, game over.")
+    }
+    else{
+
+        alert("you are right")
+        document.getElementById("result").innerHTML = "correct : " + correct + " , " + " wrong : " + wrong
+    }    
+}
+
+}
     </script>
+    </div>
 </body>
 </html>
